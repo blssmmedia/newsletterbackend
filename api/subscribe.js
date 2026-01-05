@@ -109,7 +109,10 @@ export default async function handler(req, res) {
       // If contact already exists, that's okay - continue to send welcome email
       if (!contactError.message?.includes('already exists')) {
         console.error('Error adding contact:', contactError);
-        return res.status(500).json({ error: 'Failed to add subscriber' });
+        return res.status(500).json({ 
+          error: 'Failed to add subscriber',
+          details: contactError.message || contactError.name || JSON.stringify(contactError)
+        });
       }
     }
 
@@ -136,7 +139,10 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Webhook error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ 
+      error: 'Internal server error',
+      details: error.message || String(error)
+    });
   }
 }
 
