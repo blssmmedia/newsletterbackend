@@ -10,48 +10,75 @@ function isValidEmail(email) {
 
 // Welcome email HTML template
 function getWelcomeEmailHTML(email) {
+  // TODO: Replace with your hosted logo URL
+  const logoUrl = process.env.LOGO_URL || 'https://newsletterbackend.vercel.app/blssm_logo.png';
+  
   return `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f9fafb;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; background-color: #FAF9F6;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #FAF9F6;">
     <tr>
-      <td align="center">
-        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 560px; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-          <!-- Header -->
+      <td align="center" style="padding: 40px 20px;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; background-color: #FAF9F6;">
+          
+          <!-- Logo -->
           <tr>
-            <td style="padding: 40px 40px 30px; text-align: center;">
-              <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #111827;">
-                Welcome to BLSSM! ✨
+            <td align="center" style="padding: 20px 0 40px;">
+              <img src="${logoUrl}" alt="BLSSM" width="80" style="display: block;" />
+            </td>
+          </tr>
+          
+          <!-- Main Heading -->
+          <tr>
+            <td style="padding: 0 40px;">
+              <h1 style="margin: 0; font-family: 'Oswald', 'Arial Narrow', Impact, sans-serif; font-size: 52px; font-weight: 700; line-height: 1.0; color: #630111; text-transform: uppercase; letter-spacing: -1px;">
+                WELCOME<br>TO OUR
+              </h1>
+              <h1 style="margin: 0 0 30px 0; font-family: 'Oswald', 'Arial Narrow', Impact, sans-serif; font-size: 52px; font-weight: 700; line-height: 1.0; color: #630111; text-transform: uppercase; letter-spacing: -1px;">
+                NEWSLETTER
               </h1>
             </td>
           </tr>
-          <!-- Body -->
+          
+          <!-- Body Text -->
           <tr>
-            <td style="padding: 0 40px 40px;">
-              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #4b5563;">
-                Thanks for subscribing to our newsletter! You're now part of our community.
-              </p>
-              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #4b5563;">
-                We'll keep you updated with the latest news, updates, and exclusive content delivered straight to your inbox.
-              </p>
-              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4b5563;">
-                Stay tuned for great things ahead!
+            <td style="padding: 0 40px 60px;">
+              <p style="margin: 0; font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 18px; line-height: 1.6; color: #630111;">
+                We're so excited to have you<br>
+                as part of our community.<br>
+                You'll be the first to get trend alerts,<br>
+                exclusive UGC opportunities,<br>
+                and everything you need to scale<br>
+                your socials faster than ever.
               </p>
             </td>
           </tr>
-          <!-- Footer -->
+          
+          <!-- Footer Divider -->
           <tr>
-            <td style="padding: 30px 40px; background-color: #f9fafb; border-top: 1px solid #e5e7eb;">
-              <p style="margin: 0; font-size: 14px; color: #9ca3af; text-align: center;">
-                You're receiving this because you signed up at our website.
-              </p>
+            <td style="padding: 0 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="font-family: 'Oswald', 'Arial Narrow', Impact, sans-serif; font-size: 12px; font-weight: 500; color: #630111; text-transform: uppercase; letter-spacing: 1px; padding-bottom: 20px;">
+                    WELCOME
+                  </td>
+                  <td style="padding: 0 15px 20px;">
+                    <div style="height: 1px; background-color: #630111; width: 100%;"></div>
+                  </td>
+                  <td style="font-family: 'Oswald', 'Arial Narrow', Impact, sans-serif; font-size: 12px; font-weight: 500; color: #630111; text-transform: uppercase; letter-spacing: 1px; text-align: right; padding-bottom: 20px;">
+                    NEWSLETTER
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
+          
         </table>
       </td>
     </tr>
