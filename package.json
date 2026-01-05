@@ -1,0 +1,13 @@
+{
+  "name": "blssm-newsletter-webhook",
+  "version": "1.0.0",
+  "description": "Framer to Resend newsletter webhook",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "resend": "^4.0.0"
+  }
+}
+
