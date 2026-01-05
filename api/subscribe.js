@@ -117,8 +117,11 @@ export default async function handler(req, res) {
     }
 
     // Send welcome email
+    let emailStatus = 'skipped';
+    let emailErrorDetails = null;
+    
     if (fromEmail) {
-      const { error: emailError } = await resend.emails.send({
+      const { data: emailData, error: emailError } = await resend.emails.send({
         from: fromEmail,
         to: email,
         subject: 'Welcome to BLSSM! 🎉',
@@ -127,14 +130,18 @@ export default async function handler(req, res) {
 
       if (emailError) {
         console.error('Error sending welcome email:', emailError);
-        // Don't fail the whole request if welcome email fails
-        // The contact was still added successfully
+        emailStatus = 'failed';
+        emailErrorDetails = emailError.message || JSON.stringify(emailError);
+      } else {
+        emailStatus = 'sent';
       }
     }
 
     return res.status(200).json({ 
       success: true, 
-      message: 'Successfully subscribed!' 
+      message: 'Successfully subscribed!',
+      welcomeEmail: emailStatus,
+      emailError: emailErrorDetails
     });
 
   } catch (error) {
